@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prerequisite;
 use App\Models\Training;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $training = Training::all();
+        return view('training.index', compact('training'));
     }
 
     /**
@@ -24,7 +26,8 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        //
+        $other_training = Training::all();
+        return view('training.create', compact('other_training'));
     }
 
     /**
@@ -35,7 +38,19 @@ class TrainingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $training = new Training([
+            'name' => $request->input('name')
+        ]);
+        if($training->save()) {
+            foreach($request->input('prerequisite') as $prereq_id) {
+                $prereq = new Prerequisite([
+                    'training_id' => $training->id,
+                    'prerequisite_id' => $prereq_id
+                ]);
+                $prereq->save();
+            }
+        }
+
     }
 
     /**
