@@ -11,8 +11,9 @@
         <div class="col-md-8">
             @foreach($training as $t)
             <div class="card mb-3">
-                <div class="card-header">
-                    {{ $t->name }}
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>{{ $t->name }}</span>
+                    <a href="{{ route('training.edit', ['training' => $t]) }}" class="btn btn-outline-secondary">Edit</a>
                 </div>
 
                 @if(count($t->prerequisites) > 0)
