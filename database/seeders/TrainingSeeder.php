@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TrainingSeeder extends Seeder
 {
@@ -13,6 +14,12 @@ class TrainingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        foreach([
+            'Drill',
+            'Broom',
+            'Saw'
+        ] as $name) {
+            DB::table('trainings')->insert(compact('name'));
+        }
     }
 }

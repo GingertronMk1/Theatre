@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         (new GroupSeeder())->run();
         (new UserSeeder())->run();
+        (new TrainingSeeder())->run();
+        (new TrainingUserSeeder())->run();
     }
 }
