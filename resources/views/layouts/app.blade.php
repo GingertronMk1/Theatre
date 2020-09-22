@@ -55,7 +55,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="linksDropdown">
-                                    <a href="/training/all" class="dropdown-item">Training</a>
+                                    <a href="{{ route('training.index') }}" class="dropdown-item">Training</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
