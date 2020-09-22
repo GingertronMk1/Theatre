@@ -40,4 +40,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function trainingReceived() {
+        return $this->belongsToMany(
+            'App\Models\Training'
+            ,'training_user'
+            ,'trainee_id'
+        );
+    }
+
+    public function trainingGiven() {
+        return $this->belongsToMany(
+            'App\Models\Training'
+            ,'training_user'
+            ,'trainer_id'
+        );
+    }
 }
