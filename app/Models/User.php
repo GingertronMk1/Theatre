@@ -42,18 +42,10 @@ class User extends Authenticatable
     ];
 
     public function trainingReceived() {
-        return $this->belongsToMany(
-            'App\Models\Training'
-            ,'training_user'
-            ,'trainee_id'
-        );
+        return $this->hasMany('App\Models\TrainingUser', 'trainee_id');
     }
 
     public function trainingGiven() {
-        return $this->belongsToMany(
-            'App\Models\Training'
-            ,'training_user'
-            ,'trainer_id'
-        );
+        return $this->hasMany('App\Models\TrainingUser', 'trainer_id');
     }
 }
