@@ -15,17 +15,11 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('groups')->insert([
-            'name' => 'Superadmin',
-            'type' => Group::TYPE_SYSTEM
-        ]);
-        DB::table('groups')->insert([
-            'name' => 'Admin',
-            'type' => Group::TYPE_SYSTEM
-        ]);
-        DB::table('groups')->insert([
-            'name' => 'Normal',
-            'type' => Group::TYPE_SYSTEM
-        ]);
+        foreach (['Superadmin','Admin','User'] as $name) {
+            DB::table('groups')->insert([
+                'name' => $name,
+                'type' => Group::TYPE_SYSTEM
+            ]);
+        }
     }
 }

@@ -14,11 +14,7 @@ class TrainingSeeder extends Seeder
      */
     public function run()
     {
-        foreach([
-            'Drill',
-            'Broom',
-            'Saw'
-        ] as $name) {
+        foreach(['Drill','Broom','Saw'] as $name) {
             DB::table('trainings')->insert(compact('name'));
         }
     }
