@@ -8,7 +8,8 @@
                 <div class="card-header">
                     New training session
                 </div>
-                <div class="card-body">
+                <form class="card-body" action="{{ route('training-session.save') }}" method="POST">
+                    @csrf
 
                     <div class="form-group">
                         <label for="trainer-select">Trainer</label>
@@ -25,7 +26,8 @@
 
                             @foreach($trainings as $training)
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="training-{{ $training->id }}">
+                                <input class="form-check-input" type="checkbox" id="training-{{ $training->id }}"
+                                    name="trainings[]" value="{{ $training->id }}">
                                 <label class="form-check-label"
                                     for="training-{{ $training->id }}">{{ $training->name }}</label>
                             </div>
@@ -39,14 +41,21 @@
 
                             @foreach($users as $user)
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="user-{{ $user->id }}">
-                                <label class="form-check-label"
-                                    for="user-{{ $user->id }}">{{ $user->name }}</label>
+                                <input class="form-check-input" type="checkbox" id="user-{{ $user->id }}"
+                                    name="trainees[]" value="{{ $user->id }}">
+                                <label class="form-check-label" for="user-{{ $user->id }}">{{ $user->name }}</label>
                             </div>
                             @endforeach
                         </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Save Session">
+                        <a href="{{ route('training.index') }}"
+                            class="btn btn-danger">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
