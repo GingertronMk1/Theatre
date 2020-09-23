@@ -18,7 +18,29 @@ class Training extends Model
         'name'
     ];
 
-    public function prerequisites() {
-        return $this->hasMany(Prerequisite::class, 'training_id');
+    public function prerequisites()
+    {
+        return $this->hasMany(
+            Prerequisite::class,
+            'training_id'
+        );
+    }
+
+    public function prerequisiteOf()
+    {
+        return $this->hasMany(
+            Prerequisite::class,
+            'prerequisite_id'
+        );
+    }
+
+    public function trainedUsers()
+    {
+        return $this->belongsToMany(
+            User::class,
+            null,
+            null,
+            'trainee_id'
+        );
     }
 }
