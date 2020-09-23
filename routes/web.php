@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('training', TrainingController::class);
 
-    Route::prefix('training-session')->group(function() {
-        Route::get('new', [TrainingSessionController::class, 'newSession']);
+    Route::prefix('training-session')->name('training-session')->group(function() {
+        Route::get('new', [TrainingSessionController::class, 'newSession'])->name('.create');
+        Route::post('save', [TrainingSessionController::class, 'saveSession'])->name('.save');
     });
 });
