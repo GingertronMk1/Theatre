@@ -31,4 +31,13 @@ class Prerequisite extends Model
         return $this->belongsTo(Training::class, 'prerequisite_id');
     }
 
+    public function eligibleUsers() {
+        return $this->belongsToMany(
+            User::class,
+            'training_user',
+            'training_id',
+            'trainee_id'
+        );
+    }
+
 }
