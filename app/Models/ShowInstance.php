@@ -14,6 +14,17 @@ class ShowInstance extends Model
         'start_time'
     ];
 
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'start_time' => 'datetime',
+    ];
+
+
     public function show()
     {
         return $this->belongsTo(Show::class);
