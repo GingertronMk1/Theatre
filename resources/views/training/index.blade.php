@@ -13,7 +13,10 @@
             <div class="card mb-3">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ $t->name }}</span>
-                    <a href="{{ route('training.edit', ['training' => $t]) }}" class="btn btn-outline-secondary">Edit</a>
+                    <span>
+                        <a href="{{ route('training.show', ['training' => $t]) }}" class="btn btn-outline-primary">View</a>
+                        <a href="{{ route('training.edit', ['training' => $t]) }}" class="btn btn-outline-secondary">Edit</a>
+                    </span>
                 </div>
 
                 @if(count($t->prerequisites) > 0)
