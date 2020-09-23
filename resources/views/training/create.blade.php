@@ -3,33 +3,54 @@
 @section('content')
 
 <div class="container">
-    <form class="col-md-8" action="/training/create" method="POST">
-        @csrf
-        <div class="card">
-            <div class="card-header form-group">Create a new bit of Training</div>
-            <div class="card-body">
-                <label for="email">Training name</label>
+    <div class="row justify-content-center">
+        <form class="col-md-8" action="/training{{ $training->id ? '/' . $training->id : '' }}" method="POST">
+            @if($training->id)
+            @method('PUT')
+            @endif
+            @csrf
+            <div class="card">
+                <div class="card-header form-group">Create a new bit of Training</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="email">Training name</label>
+                        <input id="name" type="text" class="form-control" name="name" value="{{ $training->name }}">
+                    </div>
 
-                <input id="name" type="text" class="form-control" name="name">
+                    <div class="form-group">
 
+                        @php
+                        $prerequisite_ids = [];
+                        if(count($training->prerequisites) > 0) {
+                            $prerequisite_ids = $training->prerequisites()->pluck('prerequisite_id')->all();
+                        }
+                        @endphp
 
-                @foreach($other_training as $t)
+                        <h3>Prerequisites</h3>
+                        @foreach($other_training as $t)
+                        @php
+                            $is_prerequisite = in_array($t->id, $prerequisite_ids);
+                        @endphp
 
-                <div class="form-check">
-                    <input name="prerequisite[]" type="checkbox" class="form-check-input" id="current-{{ $t->id }}" value="{{ $t->id }}">
-                    <label for="current-{{ $t->id }}" class="form-check-label">
-                        {{ $t->name }}
-                    </label>
+                        <div class="form-check">
+                            <input name="prerequisite[]" type="checkbox" class="form-check-input"
+                                id="current-{{ $t->id }}" value="{{ $t->id }}" {{ $is_prerequisite ? "checked=\"checked\"" : ""}}>
+                            <label for="current-{{ $t->id }}" class="form-check-label">
+                            {{ $t->name }}
+                            <span>{{ print_r($is_prerequisite, true) }}
+                                </span>
+                            </label>
+
+                        </div>
+                        @endforeach
+                    </div>
+
+                    <input type="submit" class="btn btn-primary">
 
                 </div>
-                @endforeach
-
-
-                <input type="submit" class="btn btn-primary">
-
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 @endsection
