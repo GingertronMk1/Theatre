@@ -21,4 +21,8 @@ class Training extends Model
     public function prerequisites() {
         return $this->hasMany('App\Models\Prerequisite', 'training_id');
     }
+
+    public function trainingUsers() {
+        return $this->hasMany('App\Models\TrainingUser', 'training_id');
+    }
 }
