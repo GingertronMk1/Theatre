@@ -4,7 +4,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <form class="col-md-8" action="{{ $show->id ? route('shows.update', compact('show')) : route('shows.store') }}" method="POST">
+        <form class="col-md-8" action="{{ $show->id ? route('shows.update', compact('show')) : route('shows.store') }}"
+            method="POST">
             @if($show->id)
             @method('PUT')
             @endif
@@ -12,20 +13,21 @@
             <div class="card">
                 <div class="card-header form-group">Create a new Show</div>
                 <div class="card-body">
+                    <label for="name">Show Title</label>
                     <div class="form-group">
-                        <label for="name">Show Title</label>
                         <input id="name" type="text" class="form-control" name="name" value="{{ $show->name }}">
                     </div>
 
+                    <label for="description">Description</label>
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea
-                            name="description"
-                            id="description"
-                            cols="30"
-                            rows="10"
+                        <textarea name="description" id="description" cols="30" rows="10"
                             class="form-control">{{$show->description }}</textarea>
                     </div>
+
+                    <label>Roles</label>
+                    @include('components.shows.show-role')
+
+                    <a href="#" id="add-show-role" class="btn btn-outline-primary">Add role</a>
 
                     <input type="submit" class="btn btn-primary" value="{{ $show->id ? 'Update' : 'Create' }}">
                     <a href="{{ route('training.index') }}" class="btn btn-danger">Cancel</a>

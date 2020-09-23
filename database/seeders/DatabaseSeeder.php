@@ -13,11 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        (new GroupSeeder())->run();
-        (new UserSeeder())->run();
-        (new TrainingSeeder())->run();
-        (new TrainingUserSeeder())->run();
-        (new ShowSeeder())->run();
-        (new ShowInstanceSeeder())->run();
+        $seeders = [
+            new GroupSeeder(),
+            new UserSeeder(),
+            new TrainingSeeder(),
+            new TrainingUserSeeder(),
+            new ShowSeeder(),
+            new ShowInstanceSeeder(),
+            new RoleSectionSeeder(),
+            new RoleSeeder()
+        ];
+        foreach($seeders as $seeder) {
+            $seeder->run();
+        }
     }
 }

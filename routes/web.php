@@ -30,4 +30,9 @@ Route::middleware('auth')->group(function() {
         Route::get('new', [TrainingSessionController::class, 'newSession'])->name('.create');
         Route::post('save', [TrainingSessionController::class, 'saveSession'])->name('.save');
     });
+    Route::prefix('ajax')->name('ajax')->group(function() {
+        Route::get('add-show-role', function() {
+            return view('components.shows.show-role');
+        });
+    });
 });
