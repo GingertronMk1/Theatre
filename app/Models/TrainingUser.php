@@ -12,12 +12,12 @@ class TrainingUser extends Pivot
     ];
 
     public function trainer() {
-        return $this->belongsTo('App\Models\User', 'trainer_id');
+        return $this->belongsTo(User::class, 'trainer_id');
     }
     public function trainee() {
-        return $this->belongsTo('App\Models\User', 'trainee_id');
+        return $this->belongsTo(User::class, 'trainee_id');
     }
     public function training() {
-        return $this->belongsTo('App\Models\Training', 'training_id');
+        return $this->belongsTo(Training::class, 'training_id');
     }
 }

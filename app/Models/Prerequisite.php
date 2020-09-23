@@ -24,11 +24,11 @@ class Prerequisite extends Model
     ];
 
     public function training() {
-        return $this->belongsTo('App\Models\Training', 'training_id');
+        return $this->belongsTo(Training::class, 'training_id');
     }
 
     public function prerequisite() {
-        return $this->belongsTo('App\Models\Training', 'prerequisite_id');
+        return $this->belongsTo(Training::class, 'prerequisite_id');
     }
 
 }

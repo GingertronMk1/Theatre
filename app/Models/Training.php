@@ -19,7 +19,7 @@ class Training extends Model
     ];
 
     public function prerequisites() {
-        return $this->hasMany('App\Models\Prerequisite', 'training_id');
+        return $this->hasMany(Prerequisite::class, 'training_id');
     }
 
     public function trainingUsers() {
