@@ -49,7 +49,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item-dropdown">
+                            <li class="nav-item dropdown">
                                 <a id="linksDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Links
                                 </a>
