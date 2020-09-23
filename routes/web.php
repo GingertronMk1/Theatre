@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\TrainingSessionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::resource('training', TrainingController::class);
+
+    Route::prefix('training-session')->group(function() {
+        Route::get('new', [TrainingSessionController::class, 'newSession']);
+    });
 });
