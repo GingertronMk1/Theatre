@@ -62,7 +62,7 @@ class TrainingController extends Controller
      */
     public function show(Training $training)
     {
-        //
+        return view('training.show', compact('training'));
     }
 
     /**
@@ -95,8 +95,8 @@ class TrainingController extends Controller
             */
             $prerequisite_ids = $request->input('prerequisite');
             $useless = Prerequisite::where('training_id', $training->id)
-            ->whereNotIn('prerequisite_id', $prerequisite_ids)
-            ->delete();
+                ->whereNotIn('prerequisite_id', $prerequisite_ids)
+                ->delete();
             foreach ($prerequisite_ids as $prereq_id) {
                 $prereq = Prerequisite::where([
                     ['training_id', '=', $training->id],

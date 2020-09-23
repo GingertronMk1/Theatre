@@ -52,4 +52,8 @@ class Training extends Model
             return $this->prerequisites->with('eligibleUsers')->get();
         }
     }
+
+    public function trainingUsers() {
+        return $this->hasMany('App\Models\TrainingUser', 'training_id');
+    }
 }
