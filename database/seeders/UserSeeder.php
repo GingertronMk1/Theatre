@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,11 +18,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        $superadmin = new User([
             'name' => 'Superadmin',
             'email' => 'admin@tits.test',
             'password' => Hash::make('admin_password'),
             'group_id' => Group::where('name', 'Superadmin')->value('id'),
         ]);
+        $superadmin->save();
+
+        User::factory()->times(10)->create();
+
     }
 }

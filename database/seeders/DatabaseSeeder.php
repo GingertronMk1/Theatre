@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         (new UserSeeder())->run();
         (new TrainingSeeder())->run();
         (new TrainingUserSeeder())->run();
+        (new ShowSeeder())->run();
     }
 }

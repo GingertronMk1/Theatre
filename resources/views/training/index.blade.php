@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mb-3">
-            <a href="/training/create" class="btn btn-primary">
+            <a href="{{ route('training.create') }}" class="btn btn-primary">
                 Create
             </a>
         </div>
@@ -28,7 +28,7 @@
                     </li>
                     @foreach($t->prerequisites as $prereq)
                     <li class="list-group-item">
-                        {{ $prereq->prerequisite->name}}
+                        {{ $prereq->prerequisite->name }}
                     </li>
                     @endforeach
                 </ul>

@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <form class="col-md-8" action="/training{{ $training->id ? '/' . $training->id : '' }}" method="POST">
+        <form class="col-md-8" action="{{ $training->id ? route('training.store') : route('training.update', compact('training')) }}" method="POST">
             @if($training->id)
             @method('PUT')
             @endif

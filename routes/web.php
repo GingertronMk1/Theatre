@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingSessionController;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::resource('training', TrainingController::class);
+    Route::resource('shows', ShowController::class);
 
     Route::prefix('training-session')->name('training-session')->group(function() {
         Route::get('new', [TrainingSessionController::class, 'newSession'])->name('.create');

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Training;
+use App\Models\TrainingUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,11 +17,13 @@ class TrainingUserSeeder extends Seeder
     public function run()
     {
         foreach(Training::all() as $training) {
-            DB::table('training_user')->insert([
+            $training_user = new TrainingUser([
                 'training_id' => $training->id,
                 'trainer_id' => 1,
                 'trainee_id' => 1
             ]);
+
+            $training_user->save();
         }
     }
 }
