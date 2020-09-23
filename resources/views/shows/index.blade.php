@@ -23,9 +23,9 @@
                     @nl_br($s->description)
                 </br></br>
                 @php
-                $instances = $s->instances;
-                $earliest = $instances->sortBy('start_time')->first()->start_time->format('d/m/Y');
-                $latest = $instances->sortBy('start_time')->last()->start_time->format('d/m/Y');
+                $instances = $s->instances->sortBy('start_time');
+                $earliest = $instances->first()->start_time->format('d/m/Y');
+                $latest = $instances->last()->start_time->format('d/m/Y');
 
                 @endphp
                     Showing from {{ $earliest }} to {{ $latest }}
