@@ -43,4 +43,13 @@ class Training extends Model
             'trainee_id'
         );
     }
+
+    public function allEligibleUsers()
+    {
+        if($this->prerequisites()->count()) {
+            return User::all();
+        } else {
+            return $this->prerequisites->with('eligibleUsers')->get();
+        }
+    }
 }
