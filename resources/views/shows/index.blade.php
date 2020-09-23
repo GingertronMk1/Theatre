@@ -21,6 +21,14 @@
                 </div>
                 <div class="card-body">
                     @nl_br($s->description)
+                </br></br>
+                @php
+                $instances = $s->instances;
+                $earliest = $instances->sortBy('start_time')->first()->start_time->format('d/m/Y');
+                $latest = $instances->sortBy('start_time')->last()->start_time->format('d/m/Y');
+
+                @endphp
+                    Showing from {{ $earliest }} to {{ $latest }}
                 </div>
 
             </div>

@@ -13,7 +13,7 @@
                 Showings at:
                 <ul>
                     @foreach($show->instances as $instance)
-                    <li>{{ (new DateTime($instance->start_time))->format('D d/m/Y \a\t h:iA') }}</li>
+                    <li>{{ $instance->start_time->format('D d/m/Y \a\t h:iA') }}</li>
                     @endforeach
                 </ul>
                 </div>
