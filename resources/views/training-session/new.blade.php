@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Save Session">
-                        <a href="{{ route('training.index') }}"
+                        <a href="{{ url()->previous() }}"
                             class="btn btn-danger">
                             Cancel
                         </a>

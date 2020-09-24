@@ -46,7 +46,7 @@
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="{{ $training->id ? 'Update' : 'Create' }}">
-                    <a href="{{ route('training.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
 
                 </div>
             </div>
