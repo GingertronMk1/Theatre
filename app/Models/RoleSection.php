@@ -13,4 +13,8 @@ class RoleSection extends Model
         'name',
         'description'
     ];
+
+    public function roles() {
+        return $this->hasMany(Role::class);
+    }
 }

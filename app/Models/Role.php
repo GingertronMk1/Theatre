@@ -14,4 +14,8 @@ class Role extends Model
         'name',
         'description'
     ];
+
+    public function roleSection() {
+        return $this->belongsTo(RoleSection::class);
+    }
 }
