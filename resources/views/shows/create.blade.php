@@ -30,7 +30,7 @@
                     <a href="#" id="add-show-role" class="btn btn-outline-primary">Add role</a>
 
                     <input type="submit" class="btn btn-primary" value="{{ $show->id ? 'Update' : 'Create' }}">
-                    <a href="{{ route('training.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
 
                 </div>
             </div>
