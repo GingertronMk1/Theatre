@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingSessionController;
@@ -25,6 +26,7 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('training', TrainingController::class);
     Route::resource('shows', ShowController::class);
+    Route::resource('roles', RoleController::class);
 
     Route::prefix('training-session')->name('training-session')->group(function() {
         Route::get('new', [TrainingSessionController::class, 'newSession'])->name('.create');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\RoleSection;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -14,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $role_sections = RoleSection::all();
+        return view('roles.index', compact('role_sections'));
     }
 
     /**
@@ -24,7 +26,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $role = new Role();
+        $role_sections = RoleSection::all();
+        return view('roles.create', compact('role', 'role_sections'));
     }
 
     /**
@@ -35,7 +39,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = new Role($request->all());
+        if($role->save()) {
+            return redirect()->route('roles.index');
+        }
+
+        $role_sections = RoleSection::all();
+        return view('roles.create', compact('role', 'role_sections'));
     }
 
     /**
@@ -57,7 +67,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        $role_sections = RoleSection::all();
+        return view('roles.create', compact('role', 'role_sections'));
     }
 
     /**
@@ -69,7 +80,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $role->update($request->all());
+        if($role->save()) {
+            return redirect()->route('roles.index');
+        }
+
+        $role_sections = RoleSection::all();
+        return view('roles.create', compact('role', 'role_sections'));
     }
 
     /**
