@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,16 +45,19 @@ class Training extends Model
         );
     }
 
-    public function allEligibleUsers()
-    {
-        if($this->prerequisites()->count()) {
-            return User::all();
-        } else {
-            return $this->prerequisites->with('eligibleUsers')->get();
-        }
-    }
-
     public function trainingUsers() {
         return $this->hasMany('App\Models\TrainingUser', 'training_id');
+    }
+
+    public function getEligibleUsersAttribute()
+    {
+        if($this->prerequisites()->count() > 0) {
+            $prereq_ids = $this->prerequisites()->select('prerequisite_id')->get();
+            return User::whereHas('trainingReceived', function(Builder $query) use ($prereq_ids) {
+                return $query->whereIn('id', $prereq_ids);
+            })->get();
+        } else {
+            return User::all();
+        }
     }
 }
