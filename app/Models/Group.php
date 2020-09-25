@@ -10,6 +10,7 @@ class Group extends Model
     use HasFactory;
 
     public const TYPE_SYSTEM = 'system';
+    public const TYPE_USER = 'user';
 
     public function users() {
         return $this->hasMany(User::class);
