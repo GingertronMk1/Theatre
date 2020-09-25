@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="col-md-8">
-            @foreach($training as $t)
+            @foreach($trainings as $t)
             <div class="card mb-3">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ $t->name }}</span>
