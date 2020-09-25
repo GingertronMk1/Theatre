@@ -1,4 +1,4 @@
-<div class="form-group form-inline">
+<div class="form-group form-inline new-role">
     <select class="form-control" name="roles[][role_id]">
         @foreach(App\Models\Role::all() as $role)
         <option value="{{ $role->id }}">{{ $role->name }}</option>
