@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Show;
+use App\Models\ShowRole;
 use Illuminate\Http\Request;
 
 class ShowController extends Controller
@@ -39,8 +40,23 @@ class ShowController extends Controller
     {
         $show = new Show($request->all());
         if($show->save()) {
+            $role_ids = $request->input('role_id');
+            $user_ids = $request->input('user_id');
+            foreach($role_ids as $index => $role_id) {
+                if(isset($user_ids[$index])) {
+                    $showRole = new ShowRole([
+                        'show_id' => $show->id,
+                        'role_id' => $role_ids[$index],
+                        'user_id' => $user_ids[$index]
+                    ]);
+                    $showRole->save();
+                } else {
+                    break;
+                }
+            }
             return redirect()->route('shows.show', compact('show'));
         }
+        return view('shows.create', compact('show'));
     }
 
     /**

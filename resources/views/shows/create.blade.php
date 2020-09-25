@@ -24,7 +24,7 @@
                             class="form-control">{{$show->description }}</textarea>
                     </div>
 
-                    <label>Roles</label>
+                    <label id="roles-label">Roles</label>
                     @include('components.shows.show-role')
 
                     <a href="#" id="add-show-role" class="btn btn-outline-primary">Add role</a>
@@ -38,4 +38,15 @@
     </div>
 </div>
 
+@endsection
+
+@section('javascripts')
+$('#add-show-role').on('click', function() {
+    $.ajax({
+        url: '{{ route('ajax.add-show-role') }}',
+        success: function(data, textStatus, xhr) {
+            $('#roles-label').append(data);
+        }
+    })
+})
 @endsection
