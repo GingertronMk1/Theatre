@@ -36,7 +36,7 @@ class RoleSectionController extends Controller
      */
     public function store(Request $request)
     {
-        $roleSection = new RoleSection($request->all);
+        $roleSection = new RoleSection($request->all());
         if($roleSection->save()) {
             return redirect()->route('roles.index');
         }
@@ -75,7 +75,10 @@ class RoleSectionController extends Controller
      */
     public function update(Request $request, RoleSection $roleSection)
     {
-        //
+        if($roleSection->update($request->all())) {
+            return redirect()->route('roles.index');
+        }
+        return redirect()->route('role-sections', compact('roleSection'));
     }
 
     /**
