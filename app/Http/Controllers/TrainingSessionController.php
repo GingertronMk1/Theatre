@@ -24,18 +24,15 @@ class TrainingSessionController extends Controller
     {
         foreach($request->input('trainings') as $training) {
             foreach($request->input('trainees') as $trainee) {
-                $trainingUser = TrainingUser::where([
-                    ['training_id', '=', $training],
-                    ['trainee_id', '=', $trainee]
-                ])->first();
-                if(!$trainingUser) {
-                    $trainingUser = new TrainingUser([
-                        'trainer_id' => $request->input('trainer'),
-                        'training_id' => $training,
-                        'trainee_id' => $trainee
-                    ]);
-                    $trainingUser->save();
-                }
+                $trainingUser = TrainingUser::firstOrNew([
+                    'training_id' => $training,
+                    'trainee_id' => $trainee
+                ]);
+
+                $trainingUser->trainer_id = $request->input('trainer');
+                if(!$trainingUser->save()) {
+                    return "PROBLEM";
+                };
             }
         }
         return redirect()->route('training.index');
