@@ -15,8 +15,8 @@ class RoleSectionSeeder extends Seeder
     public function run()
     {
         foreach ([
-            'Cast' => 'The actors in the show',
-            'Crew' => 'The people that make the show actually happen'
+            RoleSection::NAME_CAST => 'The actors in the show',
+            RoleSection::NAME_CREW => 'The people that make the show actually happen'
         ] as $role_name => $role_desc) {
             $rs = new RoleSection([
                 'name' => $role_name,

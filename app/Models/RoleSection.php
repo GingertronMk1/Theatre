@@ -9,6 +9,9 @@ class RoleSection extends Model
 {
     use HasFactory;
 
+    public const NAME_CAST = 'Cast';
+    public const NAME_CREW = 'Crew';
+
     protected $fillable = [
         'name',
         'description'
