@@ -19,13 +19,22 @@
                     </div>
 
                     <label for="description">Description</label>
-                    <div class="form-group">
+                    <div class="form-group form-item-description">
                         <textarea name="description" id="description" cols="30" rows="10"
                             class="form-control">{{$show->description }}</textarea>
                     </div>
 
                     <label id="roles-label">Roles</label>
+                    <div class="form-group form-item-roles">
+                    @forelse($show->showRoles as $showRole)
+                    @include('components.shows.show-role', [
+                        'user_id' => $showRole->user_id,
+                        'role_id' => $showRole->role_id
+                    ])
+                    @empty
                     @include('components.shows.show-role')
+                    @endforelse
+                    </div>
 
                     <a href="#" id="add-show-role" class="btn btn-outline-primary">Add role</a>
 
@@ -40,13 +49,15 @@
 
 @endsection
 
-@section('javascripts')
+@push('scripts')
+<script type="text/javascript">
 $('#add-show-role').on('click', function() {
     $.ajax({
         url: '{{ route('ajax.add-show-role') }}',
         success: function(data, textStatus, xhr) {
-            $('#roles-label').append(data);
+            $('.form-item-roles').append(data);
         }
     })
 })
-@endsection
+</script>
+@endpush

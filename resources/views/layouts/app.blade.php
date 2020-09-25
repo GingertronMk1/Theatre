@@ -78,6 +78,5 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 
-
-<script type="text/javascript">@yield('javascripts')</script>
+@stack('scripts')
 </html>
