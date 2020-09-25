@@ -47,7 +47,7 @@ class ShowController extends Controller
             foreach($role_ids as $index => $role_id) {
                 if(isset($user_ids[$index])) {
                     $show
-                    ->showRoles()
+                    ->roles()
                     ->attach(
                         $role_ids[$index], [
                             'user_id' => $user_ids[$index]
@@ -97,19 +97,14 @@ class ShowController extends Controller
             $role_request = $request->input('roles');
             $role_ids = $role_request['role_id'];
             $user_ids = $role_request['user_id'];
-
+            $sync_data = [];
             foreach($role_ids as $index => $role_id) {
                 if(isset($user_ids[$index])) {
-                    $show
-                    ->showRoles()
-                    ->attach(
-                        $role_ids[$index], [
-                            'user_id' => $user_ids[$index]
-                           ]);
-                } else {
-                    break;
+                    $sync_data[$role_id] = ['user_id' => $user_ids[$index]];
                 }
             }
+            $show->roles()->sync($sync_data);
+
             return redirect()->route('shows.show', compact('show'));
         }
 
