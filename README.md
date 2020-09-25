@@ -11,8 +11,8 @@ This is based on my experience as a member of the [Nottingham New Theatre](https
 - [x] Training Prerequisites
 - [x] Training-User links (A `User` can be trained in `Training`s by other `User`s)
 - [x] Training Sessions - A way of giving many `User`s many `Training`s at once
-- [ ] Shows
-- [ ] Roles
+- [x] Shows
+- [x] Roles
 - [ ] Tickets
 
 ### Plan
