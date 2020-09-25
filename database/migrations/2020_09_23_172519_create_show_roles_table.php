@@ -19,7 +19,7 @@ class CreateShowRolesTable extends Migration
             $table->integer('show_id');
             $table->integer('user_id');
             $table->integer('role_id');
-            $table->json('metadata');
+            $table->json('metadata')->nullable(true);
         });
     }
 
