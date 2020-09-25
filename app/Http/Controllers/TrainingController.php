@@ -15,8 +15,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $training = Training::all();
-        return view('training.index', compact('training'));
+        $trainings = Training::all();
+        return view('training.index', compact('trainings'));
     }
 
     /**
