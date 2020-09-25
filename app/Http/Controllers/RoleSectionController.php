@@ -24,7 +24,8 @@ class RoleSectionController extends Controller
      */
     public function create()
     {
-        //
+        $roleSection = new RoleSection();
+        return view('role-sections.create', compact('roleSection'));
     }
 
     /**
@@ -35,7 +36,12 @@ class RoleSectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $roleSection = new RoleSection($request->all);
+        if($roleSection->save()) {
+            return redirect()->route('roles.index');
+        }
+
+        return view('role-sections.create', compact('roleSection'));
     }
 
     /**
@@ -57,7 +63,7 @@ class RoleSectionController extends Controller
      */
     public function edit(RoleSection $roleSection)
     {
-        //
+        return view('role-sections.create', compact('roleSection'));
     }
 
     /**
