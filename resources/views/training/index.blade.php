@@ -61,7 +61,7 @@
                     <h4 class="list-group-item">
                         Eligible Users
                     </h4>
-                    @forelse ($t->allEligibleUsers() as $eu)
+                    @forelse ($t->eligible_users as $eu)
                     <li class="list-group-item">
                         {{ $eu->name }}
                     </li>
