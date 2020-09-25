@@ -18,7 +18,8 @@ class CreateRolesTable extends Migration
             $table->timestamps();
             $table->integer('role_section_id');
             $table->string('name');
-            $table->mediumText('description');
+            $table->mediumText('description')->nullable(true);
+            $table->string('type');
         });
     }
 

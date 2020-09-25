@@ -17,7 +17,7 @@ class CreateShowsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->mediumText('description');
+            $table->mediumText('description')->nullable(true);
         });
     }
 
