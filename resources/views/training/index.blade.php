@@ -58,6 +58,18 @@
                         No users are trained in {{ $t->name }}
                     </li>
                     @endforelse
+                    <h4 class="list-group-item">
+                        Eligible Users
+                    </h4>
+                    @forelse ($t->allEligibleUsers() as $eu)
+                    <li class="list-group-item">
+                        {{ $eu->name }}
+                    </li>
+                    @empty
+                    <li class="list-group-item">
+                        No users are trained in {{ $t->name }}
+                    </li>
+                    @endforelse
                 </ul>
             </div>
             @endforeach
