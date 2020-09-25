@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
+@section('header', 'Roles')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mb-3">
             <a href="{{ route('roles.create') }}" class="btn btn-primary">
-                Create
+                Create Role
+            </a>
+            <a href="{{ route('role-sections.create') }}" class="btn btn-outline-primary">
+                Create Role Section
             </a>
         </div>
         <div class="col-md-8">
