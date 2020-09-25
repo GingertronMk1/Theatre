@@ -5,8 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h2 class="card-header">
-                    {{ $show->name }}
+                <h2 class="card-header d-flex justify-content-between">
+                    <span>
+                        {{ $show->name }}
+                    </span>
+                    <a href="{{ route('shows.edit', compact('show')) }}" class="btn btn-outline-primary">Edit show</a>
                 </h2>
                 <div class="card-body">
                     <h4>Description</h4>
