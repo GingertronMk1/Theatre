@@ -37,6 +37,6 @@ Route::middleware('auth')->group(function() {
     Route::prefix('ajax')->name('ajax')->group(function() {
         Route::get('add-show-role', function() {
             return view('components.shows.show-role');
-        });
+        })->name('.add-show-role');
     });
 });
