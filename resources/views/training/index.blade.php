@@ -7,6 +7,10 @@
             <a href="{{ route('training.create') }}" class="btn btn-primary">
                 Create
             </a>
+
+            <a href="{{ route('training-session.create') }}" class="btn btn-outline-primary">
+                New Training Session
+            </a>
         </div>
         <div class="col-md-8">
             @foreach($trainings as $t)
