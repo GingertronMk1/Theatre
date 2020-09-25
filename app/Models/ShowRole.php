@@ -19,4 +19,16 @@ class ShowRole extends Model
     protected $casts = [
         'metadata' => 'json'
     ];
+
+    public function show() {
+        return $this->belongsTo(Show::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
 }
