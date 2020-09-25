@@ -40,16 +40,18 @@ class ShowController extends Controller
     {
         $show = new Show($request->all());
         if($show->save()) {
-            $role_ids = $request->input('role_id');
-            $user_ids = $request->input('user_id');
+            $role_request = $request->input('roles');
+            $role_ids = $role_request['role_id'];
+            $user_ids = $role_request['user_id'];
+
             foreach($role_ids as $index => $role_id) {
                 if(isset($user_ids[$index])) {
-                    $showRole = new ShowRole([
-                        'show_id' => $show->id,
-                        'role_id' => $role_ids[$index],
-                        'user_id' => $user_ids[$index]
-                    ]);
-                    $showRole->save();
+                    $show
+                    ->showRoles()
+                    ->attach(
+                        $role_ids[$index], [
+                            'user_id' => $user_ids[$index]
+                           ]);
                 } else {
                     break;
                 }
@@ -92,6 +94,22 @@ class ShowController extends Controller
     {
         $show->update($request->all());
         if($show->save()) {
+            $role_request = $request->input('roles');
+            $role_ids = $role_request['role_id'];
+            $user_ids = $role_request['user_id'];
+
+            foreach($role_ids as $index => $role_id) {
+                if(isset($user_ids[$index])) {
+                    $show
+                    ->showRoles()
+                    ->attach(
+                        $role_ids[$index], [
+                            'user_id' => $user_ids[$index]
+                           ]);
+                } else {
+                    break;
+                }
+            }
             return redirect()->route('shows.show', compact('show'));
         }
 
