@@ -20,7 +20,8 @@ class RoleSectionSeeder extends Seeder
         ] as $role_name => $role_desc) {
             $rs = new RoleSection([
                 'name' => $role_name,
-                'description' => $role_desc
+                'description' => $role_desc,
+                'type' => RoleSection::TYPE_SYSTEM
             ]);
             $rs->save();
         }

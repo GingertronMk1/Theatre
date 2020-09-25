@@ -44,7 +44,8 @@ class RoleSeeder extends Seeder
             $role = new Role([
                 'name' => $role_name,
                 'description' => $role_data['description'],
-                'role_section_id' => RoleSection::where('name', $role_data['role_section'])->first()->id
+                'role_section_id' => RoleSection::where('name', $role_data['role_section'])->first()->id,
+                'type' => Role::TYPE_SYSTEM
             ]);
             $role->save();
         }
