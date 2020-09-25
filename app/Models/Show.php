@@ -24,7 +24,7 @@ class Show extends Model
     }
 
     public function roles() {
-        return $this->belongsToMany(Role::class, ShowRole::class)->withPivot(['user_id']);
+        return $this->belongsToMany(Role::class, ShowRole::class)->withPivot(['user_id'])->withTimestamps();
     }
 
     public function cast() {
