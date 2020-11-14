@@ -11,5 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+const esfilename = 'public/js/app.es2015.js';
+
+mix
+.js(
+    'resources/js/app.js',
+    esfilename
+)
+.babel(
+    esfilename,
+    'public/js/app.js'
+)
+;
+
+mix.sass('resources/sass/app.scss', 'public/css');
