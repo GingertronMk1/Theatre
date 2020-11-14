@@ -4,6 +4,27 @@ Welcome to The Integrated Theatre System, a one-stop shop for all aspects of run
 Well, probably not *all* aspects, but that's the aim.
 This is based on my experience as a member of the [Nottingham New Theatre](https://newtheatre.org.uk).
 
+
+### Installation
+
+Once downloaded, run the following commands (assuming you are on a Mac):
+
+```
+composer install
+npm install
+php vendor/bin/homestead make
+```
+
+Then check your `Homestead.yaml` file, make a note of the IP address denoted by the `ip` value, and ensure the following line is in your `/etc/hosts` file (using as an example the IP address 192.168.10.10):
+
+```
+{homestead_ip} theatre.test
+```
+
+Where `{homestead_ip}` is the IP address you noted.
+
+Finally, run `vagrant up`.
+
 ### To-do list
 - [x] Users
 - [x] Groups
